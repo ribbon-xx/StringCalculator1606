@@ -74,7 +74,7 @@ public class StringCalculator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		add("//[a]]]]]][[[[[[[[%]\n1]]]]]2[[[[[[[%3");
 
 	}
 
