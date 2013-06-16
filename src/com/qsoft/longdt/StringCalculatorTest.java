@@ -34,8 +34,8 @@ public class StringCalculatorTest {
 	@Test
 	public void shouldReturnExceptionWithNegativeNumber() {
 		exception.expect(NumberFormatException.class);
-		exception.expectMessage("negatives not allowed -5");
-		StringCalculator.add("1,3,-5");
+		exception.expectMessage("negatives not allowed -3,-5");
+		StringCalculator.add("1,-3,-5");
 	}
 
 }

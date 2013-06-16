@@ -23,11 +23,28 @@ public class StringCalculator {
 
 	private static int methodSum(String input) {
 		ArrayList<Integer> ints = new ArrayList<Integer>();
+		ArrayList<Integer> negativeInts = new ArrayList<Integer>();
 		Pattern p = Pattern.compile("-?\\d+");
 		Matcher m = p.matcher(input);
 		while (m.find()) {
 			int number = toInt(m.group());
-			ints.add(number);
+			if (number < 0) {
+				negativeInts.add(number);
+			} else {
+				ints.add(number);
+			}
+		}
+		StringBuilder negativeStr = new StringBuilder();
+		if (negativeInts.size() > 0) {
+			for (int i = 0; i < negativeInts.size(); i++) {
+				if (i < negativeInts.size() - 1) {
+					negativeStr.append(negativeInts.get(i) + ",");
+				} else {
+					negativeStr.append(negativeInts.get(i));
+				}
+			}
+			throw new NumberFormatException("negatives not allowed "
+					+ negativeStr.toString());
 		}
 
 		int sum = 0;
