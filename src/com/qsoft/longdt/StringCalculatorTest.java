@@ -37,5 +37,10 @@ public class StringCalculatorTest {
 		exception.expectMessage("negatives not allowed -3,-5");
 		StringCalculator.add("1,-3,-5");
 	}
+	
+	@Test
+	public void shouldReturnWithDelimDefine() {
+		assertEquals(3, StringCalculator.add("//;\n1;2"));
+	}
 
 }
