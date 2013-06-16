@@ -58,14 +58,23 @@ public class StringCalculator {
 	}
 
 	private static String replaceDelim(String input) {
-		String tmp = input.replace("//", "");
+		String tmp = input.substring(2);
 		while (tmp.contains("[")) {
-			String delimContent = tmp.substring(tmp.indexOf("[") + 1,
-					tmp.indexOf("]"));
-			String delimDefine = tmp.substring(tmp.indexOf("["),
-					tmp.indexOf("]") + 1);
-			tmp = tmp.replaceAll(Pattern.quote(delimDefine), "");
-			tmp = tmp.replaceAll(Pattern.quote(delimContent), ",");
+			int pos1 = tmp.indexOf("[");
+			int pos2 = tmp.indexOf("]");
+			if (tmp.indexOf("[", pos1 + 1) == pos1) {
+				String delimContent = tmp.substring(pos1 + 1,
+						tmp.lastIndexOf("]"));
+				String delimDefine = tmp.substring(pos1,
+						tmp.lastIndexOf("]") + 1);
+				tmp = tmp.replaceAll(Pattern.quote(delimDefine), "");
+				tmp = tmp.replaceAll(Pattern.quote(delimContent), ",");
+			} else {
+				String delimContent = tmp.substring(pos1 + 1, pos2);
+				String delimDefine = tmp.substring(pos1, pos2 + 1);
+				tmp = tmp.replaceAll(Pattern.quote(delimDefine), "");
+				tmp = tmp.replaceAll(Pattern.quote(delimContent), ",");
+			}
 		}
 		return tmp;
 	}
@@ -74,8 +83,6 @@ public class StringCalculator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		add("//[a]]]]]][[[[[[[[%]\n1]]]]]2[[[[[[[%3");
-
 	}
 
 }

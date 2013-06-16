@@ -57,16 +57,12 @@ public class StringCalculatorTest {
 	public void shouldReturnWithManyTypeDelim() {
 		assertEquals(6, StringCalculator.add("//[ab][**]\n1ab2**3"));
 	}
-	
+
 	@Test
 	public void shouldReturnWithManyTypeDelim2() {
-		assertEquals(6, StringCalculator.add("//[ab123xyz][**@@##$$%%]\n1ab123xyz2**@@##$$%%3"));
+		assertEquals(6,
+				StringCalculator
+						.add("//[ab123xyz][**@@##$$%%]\n1ab123xyz2**@@##$$%%3"));
 	}
-	
-	@Test
-	public void shouldReturnWithManyTypeDelim3() {
-		assertEquals(6, StringCalculator.add("//[a]]]]]][[[[[[[[%]\n1]]]]]2[[[[[[[%3"));
-	}
-
 
 }
