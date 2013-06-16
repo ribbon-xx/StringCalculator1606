@@ -33,7 +33,8 @@ public class StringCalculator {
 			if (number < 0) {
 				negativeInts.add(number);
 			} else {
-				ints.add(number);
+				if (number <= 1000)
+					ints.add(number);
 			}
 		}
 		StringBuilder negativeStr = new StringBuilder();
