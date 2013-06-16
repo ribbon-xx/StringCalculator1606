@@ -20,5 +20,10 @@ public class StringCalculatorTest {
 	public void shouldReturnWithCommaDelim() {
 		assertEquals(3, StringCalculator.add("1,2"));
 	}
+	
+	@Test
+	public void shouldReturnWithBreakLineDelim() {
+		assertEquals(6, StringCalculator.add("1\n2,3"));
+	}
 
 }
