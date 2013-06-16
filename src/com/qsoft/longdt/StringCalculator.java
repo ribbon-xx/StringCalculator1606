@@ -11,10 +11,12 @@ public class StringCalculator {
 			return 0;
 		} else if (input.length() == 1) {
 			return toInt(input);
-		} else if (input.contains(",")) {
+		} else if (!input.startsWith("//")) {
 			return methodSum(input);
+		} else {
+			String tmp = replaceDelim(input);
+			return methodSum(tmp);
 		}
-		return -1;
 	}
 
 	private static int toInt(String input) {
@@ -52,6 +54,19 @@ public class StringCalculator {
 			sum += integer;
 		}
 		return sum;
+	}
+
+	private static String replaceDelim(String input) {
+		String tmp = input.replace("//", "");
+		while (tmp.contains("[")) {
+			String delimContent = tmp.substring(tmp.indexOf("[") + 1,
+					tmp.indexOf("]"));
+			String delimDefine = tmp.substring(tmp.indexOf("["),
+					tmp.indexOf("]") + 1);
+			tmp = tmp.replaceAll(Pattern.quote(delimDefine), "");
+			tmp = tmp.replaceAll(Pattern.quote(delimContent), ",");
+		}
+		return tmp;
 	}
 
 	/**
